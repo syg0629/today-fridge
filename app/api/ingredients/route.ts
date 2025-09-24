@@ -53,7 +53,7 @@ export async function POST(req: Request) {
     const purchasedAt = body.purchaseDate ? new Date(body.purchaseDate) : null;
     const expiresAt = body.expiryDate ? new Date(body.expiryDate) : null;
 
-    const created = await prisma.ingredient.create({
+    const created = (await prisma.ingredient.create({
       data: {
         name: body.name.trim(),
         category: catEnum,
@@ -62,7 +62,7 @@ export async function POST(req: Request) {
         purchasedAt,
         expiresAt,
       },
-    });
+    })) as PrismaIngredient;
 
     const catKo = enumToKo[created.category] ?? "기타";
     const today = new Date();

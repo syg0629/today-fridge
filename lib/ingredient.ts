@@ -1,20 +1,32 @@
 // lib/ingredient.ts
 
 // 1) 카테고리 상수/유형
-export const CATEGORY_KO = ["야채", "고기", "유제품", "조미료", "기타"] as const;
+export const CATEGORY_KO = [
+  "야채",
+  "고기",
+  "유제품",
+  "조미료",
+  "기타",
+] as const;
 export type CategoryKo = (typeof CATEGORY_KO)[number];
 
-export const CATEGORY_ENUM = ["VEGETABLE", "MEAT", "DAIRY", "SEASONING", "OTHER"] as const;
+export const CATEGORY_ENUM = [
+  "VEGETABLE",
+  "MEAT",
+  "DAIRY",
+  "SEASONING",
+  "OTHER",
+] as const;
 export type CategoryEnum = (typeof CATEGORY_ENUM)[number];
 
-// 2) enum ↔ ko 매핑 
+// 2) enum ↔ ko 매핑
 export const enumToKo = {
   VEGETABLE: "야채",
   MEAT: "고기",
   DAIRY: "유제품",
   SEASONING: "조미료",
   OTHER: "기타",
-} as const satisfies Record<CategoryEnum, CategoryKo>;
+} satisfies Record<CategoryEnum, CategoryKo>;
 
 export const koToEnum = {
   야채: "VEGETABLE",
@@ -22,7 +34,7 @@ export const koToEnum = {
   유제품: "DAIRY",
   조미료: "SEASONING",
   기타: "OTHER",
-} as const satisfies Record<CategoryKo, CategoryEnum>;
+} satisfies Record<CategoryKo, CategoryEnum>;
 
 // 3) 이모지 매핑
 // - values는 string literal 유지
@@ -33,5 +45,4 @@ export const emojiByKo = {
   유제품: "🥛",
   조미료: "🧂",
   기타: "🍳",
-} as const satisfies Record<CategoryKo, string>;
-
+} satisfies Record<CategoryKo, string>;
